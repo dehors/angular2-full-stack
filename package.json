@@ -1,0 +1,24 @@
+{
+  "name": "full-stack-app",
+  "version": "1.0.0",
+  "description": "Angular 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dehors/angular2-full-stack.git"
+  },
+  "author": "slam24",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dehors/angular2-full-stack/issues"
+  },
+  "homepage": "https://github.com/dehors/angular2-full-stack#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mysql": "^2.13.0"
+  }
+}
