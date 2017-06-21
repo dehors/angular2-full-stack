@@ -15,9 +15,25 @@ export class InventarioService {
 
 	constructor(private http: Http) { }
 
-	getInventario():Observable<Inventario[]>{
+	getInventarios():Observable<Inventario[]>{
 		let url = `${this.url}`;
 		return this.http.get(url)
+					.map(r => r.json())
+					.catch(this.handleError);
+	}
+
+	getInventario(id: number):Observable<Inventario[]>{
+		let url = `${this.url}/${id}`;
+		return this.http.get(url)
+					.first()
+					.map(r => r.json())
+					.catch(this.handleError);
+	}
+
+	addInventario(inventario: Inventario){
+		let url = `${this.url}`;
+		let iJson = JSON.stringify(inventario);
+		return this.http.post(url, iJson, {headers: this.headers})
 					.map(r => r.json())
 					.catch(this.handleError);
 	}
