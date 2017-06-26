@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { InventarioService } from './inventario.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { InventarioValidator } from './inventario.validators';
+import { Inventario } from './inventario';
+
 
 
 @Component({
@@ -14,6 +16,7 @@ export class InventarioDetalleComponent implements OnInit {
 
 	titulo = "Agregar un nuevo registro";
 	form: FormGroup;
+	inventario = new Inventario(null,null,null,null,null);
 
 	constructor(
 		private route: ActivatedRoute,
@@ -23,13 +26,13 @@ export class InventarioDetalleComponent implements OnInit {
 		) { this.crearControles(); }
 
 	ngOnInit() {
-		let id = this.route.snapshot.params['id'];
+		/*let id = this.route.snapshot.params['id'];
 		if (!id) return;
-		console.log(id);
+		console.log(id);*/
 	}
 
 	crearControles(){
-		this.form = this.fb.group({
+		/*this.form = this.fb.group({
 			id: ['', Validators.required, InventarioValidator.valorUnico(this.service)],
 			producto:['', Validators.compose([
 					Validators.required,
@@ -38,11 +41,20 @@ export class InventarioDetalleComponent implements OnInit {
 			existencia:['', Validators.required],
 			precio:['', Validators.required],
 			proveedor:['', Validators.required]
-		})
+		})*/
 	}
 
-	cleanform(){
-		this.form.reset();
+	cleanform(form){
+		//
+		form.reset();
+
+		//Sin validadores
+		//this.invetario.id = 0;
+		//this.invetario.producto = '';
+
+		//with ReactiveFormsModule
+		//this.form.reset();
+
 		//Sin validadores
 		/*this.form.patchValue({
 			id: '',
