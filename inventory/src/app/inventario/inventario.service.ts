@@ -38,6 +38,14 @@ export class InventarioService {
 					.catch(this.handleError);
 	}
 
+	putInventario(inventario: Inventario){
+		let url = `${this.url}`;
+		let iJson = JSON.stringify(inventario);
+		return this.http.put(url, iJson, {headers: this.headers})
+					.map(r => r.json())
+					.catch(this.handleError);
+	}
+
 	private handleError(error: Response | any){
 		let errMsg: string;
 		if (error instanceof Response) {

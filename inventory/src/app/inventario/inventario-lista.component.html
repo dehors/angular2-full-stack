@@ -11,6 +11,7 @@
 						<th>Prodcuto</th>
 						<th>Existencia</th>
 						<th>Proveedor</th>
+						<th>Seleccionar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -20,6 +21,7 @@
 						<td>{{ item.existencia }}</td>
 						<td>{{ item.precio }}</td>
 						<td>{{ item.proveedor }}</td>
+						<td><button class="btn btn-sm btn-default" (click) = "select(item)">Edit</button></td>
 					</tr>
 				</tbody>
 			</table>
