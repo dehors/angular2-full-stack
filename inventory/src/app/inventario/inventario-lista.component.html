@@ -12,6 +12,7 @@
 						<th>Existencia</th>
 						<th>Proveedor</th>
 						<th>Seleccionar</th>
+						<th>Eliminar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -21,7 +22,12 @@
 						<td>{{ item.existencia }}</td>
 						<td>{{ item.precio }}</td>
 						<td>{{ item.proveedor }}</td>
-						<td><button class="btn btn-sm btn-default" (click) = "select(item)">Edit</button></td>
+						<td><button class="btn btn-sm btn-default" (click) = "select(item)">
+						<i class="fa fa-pencil fa-fw"></i>
+						Edit</button></td>
+						<td><button class="btn btn-sm btn-default" (click) = "delete(item)">
+						<i class="fa fa-trash fa-fw"></i>
+						Delete</button></td>
 					</tr>
 				</tbody>
 			</table>

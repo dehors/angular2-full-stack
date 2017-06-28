@@ -46,6 +46,13 @@ export class InventarioService {
 					.catch(this.handleError);
 	}
 
+	deleteInventario(id: number){
+		let url = `${this.url}/${id}`;
+		return this.http.delete(url)
+					.map(r => r.json())
+					.catch(this.handleError);
+	}
+
 	private handleError(error: Response | any){
 		let errMsg: string;
 		if (error instanceof Response) {

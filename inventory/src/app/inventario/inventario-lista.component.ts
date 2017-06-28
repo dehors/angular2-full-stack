@@ -22,12 +22,25 @@ export class InventarioListaComponent implements OnInit {
             rs => this.lista = rs,
             er => console.log(er),
             () => console.log(this.lista)
-            )
+        )
     }
 
     select(item: Inventario){
         let link = ['/inventario/detalle',item.id];
         this.router.navigate(link);
+    }
+
+    delete(item: Inventario){
+        if (!item) return;
+
+        this.servicio.deleteInventario(item.id)
+        .subscribe(
+            rs => console.log(rs),
+            er => console.log(er),
+            () => {
+                this.lista = this.lista.filter(h => h !== item)
+            }
+        )
     }
 
 }
