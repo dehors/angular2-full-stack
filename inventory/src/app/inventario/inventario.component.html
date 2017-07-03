@@ -2,7 +2,17 @@
   Inventario
 </div>
 <nav>
-	<button class="btn btn-primary" routerLink="lista">Lista</button>
-	<button class="btn btn-primary" routerLink="detalle">Detalle</button>
+	<button class="btn btn-primary" routerLink="lista"
+		[@animacion] = "estado" 
+		(mouseenter)="estado='active'"
+		(mouseleave)="estado='inactive'">
+		Lista
+	</button>
+	<button class="btn btn-primary" routerLink="detalle"
+		[@animacion] = "estado1" 
+		(mouseenter)="estado1='active'"
+		(mouseleave)="estado1='inactive'">
+		Detalle
+	</button>
 </nav>
 <router-outlet></router-outlet>
