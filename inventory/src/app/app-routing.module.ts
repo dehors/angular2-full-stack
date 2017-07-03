@@ -4,27 +4,21 @@ import { RouterModule, Routes }	from '@angular/router';
 import { HomeComponent }		from './home/home.component';
 import { ClientesComponent }	from './clientes/clientes.component';
 import { ContactosComponent }	from './contactos/contactos.component';
-import { InventarioComponent }	from './inventario/inventario.component';
-import { InventarioListaComponent }	from './inventario/inventario-lista.component';
-import { InventarioDetalleComponent }	from './inventario/inventario-detalle.component';
+
+import { InventarioModule } from './inventario/inventario.module';
+
 
 const appRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'clientes', component: ClientesComponent },
 	{ path: 'contactos', component: ContactosComponent },
-	{ path: 'inventario', component: InventarioComponent,
-		children: [
-			{ path: '', redirectTo: 'lista', pathMatch: 'full'},
-			{ path: 'lista', component: InventarioListaComponent },
-			{ path: 'detalle', component: InventarioDetalleComponent },
-			{ path: 'detalle/:id', component: InventarioDetalleComponent }
-		]
-	},
+	{ path: 'inventario', loadChildren: () => InventarioModule }
 ]
 
 @NgModule({
 	imports: [
-		RouterModule.forRoot(appRoutes)
+		RouterModule.forRoot(appRoutes),
+		InventarioModule
 	],
 	exports:[
 		RouterModule

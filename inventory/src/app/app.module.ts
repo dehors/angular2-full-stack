@@ -9,22 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ContactosComponent } from './contactos/contactos.component';
-import { InventarioComponent } from './inventario/inventario.component';
-import { InventarioListaComponent } from './inventario/inventario-lista.component';
-import { InventarioDetalleComponent } from './inventario/inventario-detalle.component';
 
-import { InventarioService } from './inventario/inventario.service';
-
+import { InventarioModule } from './inventario/inventario.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ClientesComponent,
-    ContactosComponent,
-    InventarioComponent,
-    InventarioListaComponent,
-    InventarioDetalleComponent
+    ContactosComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +25,10 @@ import { InventarioService } from './inventario/inventario.service';
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    InventarioModule
   ],
-  providers: [InventarioService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

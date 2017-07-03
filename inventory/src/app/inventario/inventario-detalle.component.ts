@@ -5,12 +5,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { InventarioValidator } from './inventario.validators';
 import { Inventario } from './inventario';
 
-
-
 @Component({
 	selector: 'inventario-detalle',
-	templateUrl: './inventario-detalle.component.html',
-	providers: [InventarioService]
+	templateUrl: './inventario-detalle.component.html'
 })
 export class InventarioDetalleComponent implements OnInit {
 
