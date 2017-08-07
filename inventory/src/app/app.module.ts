@@ -9,7 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ContactosComponent } from './contactos/contactos.component';
+import { LoginComponent } from './login/login.component';
 
+import { AuthService } from './login/auth.service';
 import { InventarioModule } from './inventario/inventario.module';
 
 @NgModule({
@@ -17,7 +19,8 @@ import { InventarioModule } from './inventario/inventario.module';
     AppComponent,
     HomeComponent,
     ClientesComponent,
-    ContactosComponent
+    ContactosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { InventarioModule } from './inventario/inventario.module';
     BrowserAnimationsModule,
     InventarioModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

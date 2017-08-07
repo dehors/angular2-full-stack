@@ -14,5 +14,12 @@
 			<a href="" class="nav-link" routerLink="/inventario" routerLinkActive="active">Inventario</a>
 		</li>
 	</ul>
+	<div class="derecha">
+		<button *ngIf="!auth.isLoggedIn()" class="btn btn-outline-success" (click)="Login()">Login</button>
+		<span *ngIf="auth.isLoggedIn()">
+			{{ auth.userName }}
+			<button class="btn btn-outline-success" (click)="Logout()">Logout</button>
+		</span>
+	</div>
 </nav>
 <router-outlet></router-outlet>

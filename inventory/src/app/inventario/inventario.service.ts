@@ -10,21 +10,28 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class InventarioService {
-	private headers = new Headers({ 'Content-Type':'application/json' });
+	private options;
 	private url = 'http://localhost:8000/inventario';
 
-	constructor(private http: Http) { }
+	constructor (private http: Http) {
+		let token = localStorage.getItem('token');
+		let headers = new Headers({
+			'Content-Type': 'application/json',
+			'Authorization':'Bearer ' + token
+		});
+		this.options = new RequestOptions({ headers: headers });
+	}
 
 	getInventarios():Observable<Inventario[]>{
 		let url = `${this.url}`;
-		return this.http.get(url)
+		return this.http.get(url, this.options)
 					.map(r => r.json())
 					.catch(this.handleError);
 	}
 
 	getInventario(id: number):Observable<Inventario[]>{
 		let url = `${this.url}/${id}`;
-		return this.http.get(url)
+		return this.http.get(url, this.options)
 					.first()
 					.map(r => r.json())
 					.catch(this.handleError);
@@ -33,7 +40,7 @@ export class InventarioService {
 	addInventario(inventario: Inventario){
 		let url = `${this.url}`;
 		let iJson = JSON.stringify(inventario);
-		return this.http.post(url, iJson, {headers: this.headers})
+		return this.http.post(url, iJson, this.options)
 					.map(r => r.json())
 					.catch(this.handleError);
 	}
@@ -41,14 +48,14 @@ export class InventarioService {
 	putInventario(inventario: Inventario){
 		let url = `${this.url}`;
 		let iJson = JSON.stringify(inventario);
-		return this.http.put(url, iJson, {headers: this.headers})
+		return this.http.put(url, iJson, this.options)
 					.map(r => r.json())
 					.catch(this.handleError);
 	}
 
 	deleteInventario(id: number){
 		let url = `${this.url}/${id}`;
-		return this.http.delete(url)
+		return this.http.delete(url, this.options)
 					.map(r => r.json())
 					.catch(this.handleError);
 	}

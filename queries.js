@@ -1,4 +1,5 @@
 var conexion = require('./connections');
+var jwt = require('jsonwebtoken');
 
 function MetodosDB(){
 	this.seleccionar = function(respuesta){
@@ -57,6 +58,28 @@ function MetodosDB(){
 					respuesta.send({estado:'Error'});
 				}else{
 					respuesta.send({estado:'Ok'});
+				}
+			});
+		})
+	},
+	this.login = function(datos, respuesta){
+		conexion.obtener(function(er,cn){
+			cn.query('select * from usuarios where user = ? and pass = ?', [datos.user,datos.pass], function(error,resultado){
+				cn.release();
+				if (error) {
+					respuesta.send('error');
+				}else{
+					if (resultado.length == 0) {
+						console.log('User not found');
+						respuesta.send('not found');
+					}else{
+						var token = jwt.sign({
+							user: datos.user,
+							rol: 'admin'
+						}, 'secreto',{expiresIn: '120s'});
+						respuesta.send(token);
+					}
+					
 				}
 			});
 		})

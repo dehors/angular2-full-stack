@@ -7,6 +7,8 @@ import { InventarioComponent } from './inventario.component';
 import { InventarioListaComponent } from './inventario-lista.component';
 import { InventarioDetalleComponent } from './inventario-detalle.component';
 import { InventarioService } from './inventario.service';
+
+import { AuthGuard } from '../login/auth.guard';
 import { InventarioRoutingModule } from './inventario-routing.module';
 
 @NgModule({
@@ -26,7 +28,7 @@ import { InventarioRoutingModule } from './inventario-routing.module';
 		InventarioListaComponent,
 		InventarioDetalleComponent
 	],
-	providers: [InventarioService]
+	providers: [InventarioService,AuthGuard]
 })
 export class InventarioModule { }
 

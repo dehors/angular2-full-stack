@@ -17,6 +17,10 @@ function http() {
 		app.delete('/inventario/:id',function(solicitud,respuesta){
 			db.borrar(solicitud.params.id,respuesta);
 		})
+
+		app.post('/auth/login',function(solicitud, respuesta){
+			db.login(solicitud.body, respuesta);
+		})
 	}
 }
 
