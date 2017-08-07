@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { InventarioService } from './inventario.service';
 import { Inventario } from './inventario';
 import { Router } from '@angular/router';
-
 
 @Component({
     selector: 'inventario-lista',
